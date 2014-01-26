@@ -8,6 +8,7 @@ matrix:
 
 before_script:
   - composer install --dev --prefer-source
+  - export PATH=./vendor/bin:$PATH
 
 script:
   - phpspec run -fdot
