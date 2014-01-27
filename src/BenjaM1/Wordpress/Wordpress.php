@@ -115,7 +115,7 @@ class Wordpress
      * @param  bool $refresh
      * @return Post
      */
-    public function publish(Post $post, $refresh = false)
+    public function createPost(Post $post, $refresh = false)
     {
         $post->setApi($this);
         $postId = $this->call('wp.newPost', ['content' => $post->getProperties()]);
