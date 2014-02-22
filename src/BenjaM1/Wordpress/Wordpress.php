@@ -95,11 +95,7 @@ class Wordpress
      */
     public function getCurrentUser()
     {
-        $users = array_filter($this->getUsers(), function ($user) {
-            return $user->get('username') == $this->username;
-        });
-
-        return reset($users);
+        return $this->call('wp.getProfile');
     }
 
     /**

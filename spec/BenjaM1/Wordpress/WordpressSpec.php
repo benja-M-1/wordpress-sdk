@@ -27,15 +27,15 @@ class WordpressSpec extends ObjectBehavior
 
     function it_should_retrieve_the_current_user(ClientInterface $client, HydratorManager $hm, User $user)
     {
-        $method = 'wp.getUsers';
+        $method = 'wp.getProfile';
         $this->connect('benjaming', 'foo');
 
         $user->get('username')->willReturn('foo');
         $user->get('username')->willReturn('benjaming');
 
         $client->prependParams(Argument::type('array'))->shouldBeCalled();
-        $client->call($method, Argument::type('array'))->willReturn([$user, $user]);
-        $hm->hydrate($method, Argument::type('array'))->willReturn([$user, $user]);
+        $client->call($method, Argument::type('array'))->willReturn([$user]);
+        $hm->hydrate($method, Argument::type('array'))->willReturn($user);
 
         $user = $this->getCurrentUser();
         $user->get('username')->shouldReturn('benjaming');

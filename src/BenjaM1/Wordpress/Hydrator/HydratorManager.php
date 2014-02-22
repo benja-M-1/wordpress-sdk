@@ -21,8 +21,9 @@ class HydratorManager
     public function __construct()
     {
         $this->hydrators = [
-            'wp.getUsers' => 'hydrateUsers',
-            'wp.getPost'  => 'hydratePost',
+            'wp.getUsers'   => 'hydrateUsers',
+            'wp.getProfile' => 'hydrateUser',
+            'wp.getPost'    => 'hydratePost',
         ];
     }
 
